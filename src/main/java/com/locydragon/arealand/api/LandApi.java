@@ -22,6 +22,10 @@ public class LandApi {
 		if (!isLandCreated(landName)) {
 			return null;
 		}
-		Vector locA = new Vector();
+		Vector locA = new Vector(AreaLand.save.getInt("land."+landName+".A.x"),
+				AreaLand.save.getInt("land."+landName+".A.y"), AreaLand.save.getInt("land."+landName+".A.z"));
+		Vector locB = new Vector(AreaLand.save.getInt("land."+landName+".B.x"),
+				AreaLand.save.getInt("land."+landName+".B.y"), AreaLand.save.getInt("land."+landName+".B.z"));
+		return new Land(locA, locB, landName);
 	}
 }
