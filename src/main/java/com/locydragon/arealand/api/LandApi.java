@@ -2,16 +2,20 @@ package com.locydragon.arealand.api;
 
 import com.locydragon.arealand.AreaLand;
 import com.locydragon.arealand.util.SaveUtil;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 public class LandApi {
-	public static Land createLand(Selection selection, String landName) {
+	public static Land createLand(Selection selection, String landName, Player creater) {
 		if (isLandCreated(landName)) {
 			return null;
 		}
 		SaveUtil.addInList("created", landName);
 		AreaLand.save.set("land."+landName+".world", selection.getWhere().getName());
 		Land createLand = new Land(selection.getA(), selection.getB(), landName);
+		createLand.ownerName = creater.getName();
+		createLand.inWhich = Bukkit.getWorld(selection.getWhere().getName());
 		createLand.save();
 		return createLand;
 	}

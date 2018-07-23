@@ -1,5 +1,6 @@
 package com.locydragon.arealand;
 
+import com.locydragon.arealand.commands.CommandMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -30,5 +31,6 @@ public class AreaLand extends JavaPlugin {
 			}
 		}
 		save = YamlConfiguration.loadConfiguration(saveFile);
+		Bukkit.getPluginCommand("land").setExecutor(new CommandMenu());
 	}
 }

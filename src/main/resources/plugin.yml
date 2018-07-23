@@ -2,3 +2,5 @@ name: AreaLand
 main: com.locydragon.arealand.AreaLand
 version: 1.0.0
 author: LocyDragon
+commands:
+  land:
