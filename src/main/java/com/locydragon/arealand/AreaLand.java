@@ -1,5 +1,8 @@
 package com.locydragon.arealand;
 
+import com.locydragon.arealand.api.Land;
+import com.locydragon.arealand.api.LandApi;
+import com.locydragon.arealand.cloud.LandLoading;
 import com.locydragon.arealand.commands.CommandMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -8,6 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author LocyDragon
@@ -32,5 +37,15 @@ public class AreaLand extends JavaPlugin {
 		}
 		save = YamlConfiguration.loadConfiguration(saveFile);
 		Bukkit.getPluginCommand("land").setExecutor(new CommandMenu());
+		for (String eachLand : getConfig().getStringList("created")) {
+			Land target = LandApi.getByName(eachLand);
+			LandLoading.landNameSave.put(eachLand, target);
+			List<Land> worldLand = LandLoading.landWorldSave.get(target.inWhich.getName());
+			if (worldLand == null) {
+				worldLand = new ArrayList<>();
+			}
+			worldLand.add(target);
+			LandLoading.landWorldSave.replace(target.inWhich.getName(), worldLand);
+		}
 	}
 }
