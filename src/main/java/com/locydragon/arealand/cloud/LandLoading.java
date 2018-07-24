@@ -1,12 +1,11 @@
 package com.locydragon.arealand.cloud;
 
 import com.locydragon.arealand.api.Land;
-import org.bukkit.World;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class LandLoading {
-	public static HashMap<String,Land> landNameSave = new HashMap<>();
-	public static HashMap<String,List<Land>> landWorldSave = new HashMap<>();
+	public static ConcurrentHashMap<String,Land> landNameSave = new ConcurrentHashMap<>();
+	public static ConcurrentHashMap<String,List<Land>> landWorldSave = new ConcurrentHashMap<>();
 }
