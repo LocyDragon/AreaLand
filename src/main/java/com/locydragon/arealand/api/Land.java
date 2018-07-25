@@ -43,4 +43,17 @@ public class Land {
 		return Math.abs(locA.getBlockX() - locB.getBlockX()) * Math.abs(locA.getBlockY() - locB.getBlockY()) *
 				Math.abs(locA.getBlockZ() - locB.getBlockZ());
 	}
+	@Override
+	public boolean equals(Object another) {
+		if (another == null) {
+			return false;
+		}
+		if (!(another instanceof Land)) {
+			return false;
+		}
+		if (((Land) another).landName.equals(this.landName)) {
+			return true;
+		}
+		return false;
+	}
 }

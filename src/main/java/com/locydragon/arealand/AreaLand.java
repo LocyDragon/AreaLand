@@ -20,6 +20,8 @@ import java.util.List;
 public class AreaLand extends JavaPlugin {
 	public static FileConfiguration save = null;
 	public static FileConfiguration config = null;
+	public static double readPerSecond = -1;
+	public static AreaLand instance;
 	@Override
 	public void onEnable() {
 		Bukkit.getLogger().info("Land领地插件已经启动");
@@ -47,5 +49,9 @@ public class AreaLand extends JavaPlugin {
 			worldLand.add(target);
 			LandLoading.landWorldSave.replace(target.inWhich.getName(), worldLand);
 		}
+		//Read config
+		readPerSecond = getConfig().getDouble("read.second");
+
+		instance = this;
 	}
 }
