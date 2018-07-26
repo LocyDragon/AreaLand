@@ -10,5 +10,8 @@ public class LandGuiMain implements Listener {
 	public static Inventory landGui = Bukkit.createInventory(null,
 			54, ChatColor.translateAlternateColorCodes('&'
 					, AreaLand.config.getString("lang.landUI.Title")));
+	static {
+
+	}
 
 }
