@@ -18,10 +18,9 @@ public class PlayerLandFindThread extends Thread {
 	public void run() {
 		while (!breakMe) {
 			try {
-				Thread.sleep((long)(1000 * AreaLand.readPerSecond));
 				lastLand = nowLand;
 				nowLand = LandUtil.checkNowLand(this.playerName);
-                if (!lastLand.equals(nowLand)) {
+				if (!lastLand.equals(nowLand)) {
 					Bukkit.getScheduler().runTask(AreaLand.instance, new Runnable() {
 						@Override
 						public void run() {
@@ -31,6 +30,10 @@ public class PlayerLandFindThread extends Thread {
 							Bukkit.getPluginManager().callEvent(event);
 						}
 					});
+				}
+				Thread.sleep((long)(1000 * AreaLand.readPerSecond));
+				if (Bukkit.getPlayer(this.playerName) == null) {
+					this.breakMe = true;
 				}
 			} catch (Exception exc) {
 				exc.printStackTrace();
