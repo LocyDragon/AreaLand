@@ -5,6 +5,8 @@ import com.locydragon.arealand.api.LandApi;
 import com.locydragon.arealand.cloud.LandLoading;
 import com.locydragon.arealand.commands.CommandMenu;
 import com.locydragon.arealand.listeners.AsyncOpenListener;
+import com.locydragon.arealand.listeners.LandGuiMain;
+import com.locydragon.arealand.listeners.OnLandChangeListener;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -49,7 +51,12 @@ public class AreaLand extends JavaPlugin {
 			}
 			worldLand.add(target);
 			LandLoading.landWorldSave.replace(target.inWhich.getName(), worldLand);
-			Bukkit.getPluginManager().registerEvents(new AsyncOpenListener(), this);
+
+			{
+				Bukkit.getPluginManager().registerEvents(new AsyncOpenListener(), this);
+				Bukkit.getPluginManager().registerEvents(new LandGuiMain(), this);
+				Bukkit.getPluginManager().registerEvents(new OnLandChangeListener(), this);
+			}
 		}
 		//Read config
 		readPerSecond = getConfig().getDouble("read.second");

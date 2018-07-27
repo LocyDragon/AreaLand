@@ -40,8 +40,8 @@ public class Land {
 		return true;
 	}
 	public int getSize() {
-		return Math.abs(locA.getBlockX() - locB.getBlockX()) * Math.abs(locA.getBlockY() - locB.getBlockY()) *
-				Math.abs(locA.getBlockZ() - locB.getBlockZ());
+		return Math.abs((locA.getBlockX() - locB.getBlockX())
+				* (locA.getBlockY() - locB.getBlockY()) * (locA.getBlockZ() - locB.getBlockZ()));
 	}
 	@Override
 	public boolean equals(Object another) {

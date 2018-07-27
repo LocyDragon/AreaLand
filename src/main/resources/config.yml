@@ -1,11 +1,15 @@
 ##################################AreaLand语言部分 & langguage ##############################
 lang:
-  landUI:
-    Title: "&b&l+领地信息+"
-    StickItem:
-      location: 41
-      name: "&e获取圈地木棍"
-      lore:
+  ChangeLandMsg:
+    Come: "&a你进入了 &6{LandName}&a."
+    Leave: "&a你离开了 &7{LandName}&a."
+  landUI: #领地UI界面
+    OnOpen: "&6您打开了领地主界面."
+    Title: "&b&l+领地信息+" #领地标题
+    StickItem: #获取棍子的那一个格
+      location: 41 #在箱子里的位置
+      name: "&e获取圈地木棍" #名字
+      lore: #Lore
         - "&b+单击获取圈地木棍+"
         - "&b注意: &7每分钟只能领取一次这个物品!"
         - "&b使用方法: &7左键选取点A 右键选取点B 即可圈地."
