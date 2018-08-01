@@ -1,5 +1,16 @@
 ##################################AreaLand语言部分 & langguage ##############################
 lang:
+  Items:
+    StickItem:
+      name: "&b&l+圈地棒+"
+      lore:
+        - "&7圈地棒是圈地的工具."
+        - "&7左键选取圈地点A 右键选取圈地点B"
+        - "&7即可圈地,圈地需要花费一定的金币"
+        - "&7价格: 0.5金币一个格子."
+      period: 30 #这个数字决定多少秒后可以再次获取圈地工具
+      CannotGetNotice: "&c每三十秒只能获取一次圈地工具."
+      GetItem: "&a圈地工具 x1 已经放入你的背包."
   ChangeLandMsg:
     Come: "&a你进入了 &6{LandName}&a."
     Leave: "&a你离开了 &7{LandName}&a."

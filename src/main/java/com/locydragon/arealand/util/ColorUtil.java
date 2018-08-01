@@ -1,5 +1,6 @@
 package com.locydragon.arealand.util;
 
+import com.locydragon.arealand.AreaLand;
 import org.bukkit.ChatColor;
 
 import java.util.ArrayList;
@@ -15,5 +16,11 @@ public class ColorUtil {
 	}
 	public static String getColor(String needColor) {
 		return ChatColor.translateAlternateColorCodes('&', needColor);
+	}
+	public static String getConfigColor(String path) {
+		return getColor(AreaLand.save.getString(path));
+	}
+	public static List<String> getListConfigColor(String path) {
+		return addColor(AreaLand.save.getStringList(path));
 	}
 }
