@@ -1,5 +1,6 @@
 package com.locydragon.arealand.util;
 
+import com.locydragon.arealand.util.enums.EqualsInfo;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -33,5 +34,31 @@ public class ItemStackBuilder {
 
 	public static ItemStackBuilder getBuilder(Material itemMaterial) {
 		return new ItemStackBuilder(itemMaterial);
+	}
+
+	public static boolean equalsInSet(ItemStack one, ItemStack other, EqualsInfo... set) {
+		boolean nameEquals = true;
+		boolean loreEquals = true;
+		boolean materialEquals = true;
+		boolean amountEquals = true;
+		for (EqualsInfo info : set) {
+			switch (info) {
+				case ABOUT_AMOUNT:
+					amountEquals = one.getAmount() == other.getAmount();
+					break;
+				case ABOUT_LORE:
+					loreEquals = one.getItemMeta().getLore().equals(other.getItemMeta().getLore());
+					break;
+				case ABOUT_NAME:
+					nameEquals = one.getItemMeta().getDisplayName().equals(other.getItemMeta().getDisplayName());
+					break;
+				case ABOUT_MATERIAL:
+					materialEquals = one.getType() == other.getType() || one.getType().equals(other.getType());
+					break;
+				default:
+					break;
+			}
+		}
+		return nameEquals && loreEquals && materialEquals && amountEquals;
 	}
 }
